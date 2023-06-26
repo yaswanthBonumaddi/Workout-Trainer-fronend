@@ -24,9 +24,9 @@ const Exercises = () => {
 
       if (selectedbodypart === 'all') {
 
-        exercisesData = await axios.get('new-backend-fitness-app.vercel.app/allexercises');
+        exercisesData = await axios.get('https://new-backend-fitness-app.vercel.app/allexercises');
       } else {
-        exercisesData = await axios.get(`new-backend-fitness-app.vercel.app/${selectedbodypart}`);
+        exercisesData = await axios.get(`https://new-backend-fitness-app.vercel.app/${selectedbodypart}`);
       }
 
       setExercises(exercisesData.data);
@@ -39,7 +39,7 @@ const Exercises = () => {
 
     const handleSearch = async () => {
       if (search) {
-        const exercisesData =  await axios.get('new-backend-fitness-app.vercel.app/allexercises');
+        const exercisesData =  await axios.get('https://new-backend-fitness-app.vercel.app/allexercises');
   
         const searchedExercises = exercisesData.data.filter(
           (item) => item.name.toLowerCase().includes(search)
