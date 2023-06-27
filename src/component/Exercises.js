@@ -24,9 +24,17 @@ const Exercises = () => {
 
       if (selectedbodypart === 'all') {
 
-        exercisesData = await axios.get('https://workout-trainer-api.vercel.app/allexercises');
+        exercisesData = await axios.get('https://workout-trainer-api.vercel.app/allexercises',{
+      headers:{
+        'x-token':localStorage.getItem('token')
+      }
+    });
       } else {
-        exercisesData = await axios.get(`https://workout-trainer-api.vercel.app/exercises/${selectedbodypart}`);
+        exercisesData = await axios.get(`https://workout-trainer-api.vercel.app/exercises/${selectedbodypart}`,{
+      headers:{
+        'x-token':localStorage.getItem('token')
+      }
+    });
       }
 
       setExercises(exercisesData.data);
