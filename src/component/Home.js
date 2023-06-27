@@ -2,16 +2,20 @@ import React from 'react';
 import banner from '../assets/images/banner.png';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
+import { Navigate } from 'react-router-dom';
 const Home = () => {
 
-
+  if  (!localStorage.getItem('token')){
+    return <Navigate replace to='/login'/>
+  }
 
   return (
-    
+    <><Navbar/>
       <Herobanner>
         <div className='matter-div'>
         <p className='hero-caption'>Fitness Club</p>
-        <h1 className='hero-heading'>Sweat, smile <br/> And Repeat</h1>
+        <h1 className='hero-heading'>Sweat, Smile <br/> And Repeat</h1>
         <p className='hero-para'>check out the most effective exercises personalized to you</p>
         <Link to='/exercises'><button className='hero-btn'>Explore Exercises</button></Link>
         <p className='hero-optimise'>Exercise</p>
@@ -19,7 +23,7 @@ const Home = () => {
         <img src={banner}  alt='banner' className='hero-banner-img '/>
       </Herobanner>
       
-      
+      </>
   )
 }
 
@@ -71,12 +75,40 @@ const Herobanner = styled.div`
     opacity: 0.1;
     margin-right:20px;
   }
-  @media screen and (max-width:992px) {
+  @media screen and (max-width:1350px) {
   .hero-banner-img {
     display: none;
   }
   .hero-optimise{
     font-size:150px;
+  }
+  }
+  @media screen and (max-width:568px) {
+  .matter-div{
+    margin-left: 10px;
+    width: 80%;
+  }
+  .hero-optimise{
+    display:none;
+  }
+  .hero-banner-img {
+    display: none;
+  }
+  .hero-optimise{
+    font-size:100px;
+    margin-top: 10px;
+  }
+  .hero-caption{
+    font-size: 20px;
+  }
+  .hero-heading{
+    font-weight:700;
+    margin-bottom:23px;
+    margin-top:30px;
+    font-size: 50px;
+  }
+  .hero-btn{
+    width:250px;
   }
   }
 `;

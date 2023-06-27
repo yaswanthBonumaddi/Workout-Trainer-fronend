@@ -139,17 +139,7 @@ body {
   .bodypartcart-title{
     font-size: 20px;
   }
-  .slick-item{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: 200px;
-    margin: 10px;
-    background-color: #fff;
-
-  }
+  
 
   .slick-container {
     width: 100%;

@@ -25,7 +25,7 @@ const Detail = ({ exerciseDetail }) => {
   return (
     <Card   >
       <div className='card-detail-container'>
-      <img src={gifUrl} alt={name} loading="lazy" className=" detail-card-img" />
+      <img src={gifUrl} alt={name} loading="lazy" className=" detail-card-img"  />
       <div  className='card-details-text'>
         <h1 style={{ fontSize: '30px',fontWeight:'700',textTransform:'capitalize', marginBottom:'30px' }} >
           {name}

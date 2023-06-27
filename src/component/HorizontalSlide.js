@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import coverPic from '../assets/icons/gym.png';
 import left from '../assets/icons/left-arrow.png';
 import right from '../assets/icons/right-arrow.png';
+import { styled } from 'styled-components';
 
 export default class SimpleSlider extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class SimpleSlider extends Component {
     }
 
     return (
-      <>
+      <Container>
       
       <ul className='slick-container'>
             <Slider  ref={c => (this.slider = c)} {...settings}>
@@ -88,7 +89,34 @@ export default class SimpleSlider extends Component {
           </button>
         </div>
         </div>
-          </>
+          </Container>
     );
   }
 }
+const Container = styled.div`
+.slick-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    background-color: #fff;
+
+  }
+
+@media screen and (max-width:568px) {
+  .slick-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    background-color: #fff;
+
+  }
+}
+`;

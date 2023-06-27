@@ -2,16 +2,24 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Logo from '../assets/images/Logo-black-small.png'
 import { Link } from 'react-router-dom';
+import { IoIosFitness,IoIosHome,IoIosLogOut } from "react-icons/io";
 
 const Navbar = () => {
+
+
+
   return (
     <Nav>
       <Link to='/'>
         <img src={Logo} alt='Workout Trainer'/>
         </Link>
         <ul>
-          <Link to="/" style={{textDecoration:"none",color:"Black"}}><li>Home</li></Link>
-          <Link to="/exercises" style={{textDecoration:"none",color:"Black"}}><li>Exercises</li></Link>
+          <Link to="/home" style={{textDecoration:"none",color:"Black"}}><li className='listitem'>Home</li></Link>
+          <Link  to="/home" style={{textDecoration:"none",color:"Black"}}><IoIosHome className='icons'/></Link>
+          <Link to="/exercises" style={{textDecoration:"none",color:"Black"}}><li className='listitem'>Exercises</li></Link>
+          <Link to="/exercises" style={{textDecoration:"none",color:"Black"}}><IoIosFitness  className='icons'/></Link>
+          <Link to='/login' onClick={()=>localStorage.removeItem('token')} style={{color:"#000",textDecoration:"none"}}><li  className='listitem'>Logout</li></Link>
+          <Link to="/login" onClick={()=>localStorage.removeItem('token')} style={{textDecoration:"none",color:"Black"}}> <IoIosLogOut className='icons'/></Link>     
         </ul>
       </Nav>
   )
@@ -34,12 +42,15 @@ const Nav = styled.div`
   ul{
     display: flex;
     list-style-type:none;
-    width: 200px;
+    width: 300px;
     align-items: center;
     justify-content: space-around;
     margin-left:100px;
     font-weight:bold;
     font-size:20px;
+  }
+  .icons{
+    display: none;
   }
   @media screen and (max-width:768px) {
 
@@ -53,6 +64,15 @@ const Nav = styled.div`
   ul{
     margin-left:50px;
   }
+  }
+  @media screen and (max-width:568px) {
+    margin-left: 10px;
+    .listitem{
+      display: none;
+    }
+    .icons{
+      display: inline;
+    }
   }
 `;
 

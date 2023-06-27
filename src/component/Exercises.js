@@ -6,7 +6,7 @@ import {Stack } from '@mui/material';
 import ExerciseCard from './ExerciseCard';
 import Loader from './Loader';
 import axios from 'axios';
-
+import Navbar from './Navbar';
 
 
 const Exercises = () => {
@@ -26,7 +26,7 @@ const Exercises = () => {
 
         exercisesData = await axios.get('https://new-backend-fitness-app.vercel.app/allexercises');
       } else {
-        exercisesData = await axios.get(`https://new-backend-fitness-app.vercel.app/${selectedbodypart}`);
+        exercisesData = await axios.get(`https://new-backend-fitness-app.vercel.app/exercises/${selectedbodypart}`);
       }
 
       setExercises(exercisesData.data);
@@ -61,13 +61,17 @@ const Exercises = () => {
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
 
-  const paginate = (event, value) => {
+  const paginatesmall = (event, value) => {
     setCurrentPage(value);
 
-    window.scrollTo({ top: 1800, behavior: 'smooth' });
+    window.scrollTo({ top: 480, behavior: 'smooth' });
   };
 
-  if (!currentExercises.length) return <Loader />;
+  const paginatelarge = (event, value) => {
+    setCurrentPage(value);
+
+    window.scrollTo({ top: 560, behavior: 'smooth' });
+  };
 
  
 
@@ -76,7 +80,8 @@ const Exercises = () => {
     
 
   return (
-    <>
+    <Container>
+    <Navbar/>
     <Searchbar>
       <h1 style={{marginTop:"30px",marginBottom:"20px"}}>Awesome Exercises You  Should Know</h1>
       <div >
@@ -89,26 +94,42 @@ const Exercises = () => {
     <SimpleSlider bodyParts={organs} selectedbodypart={selectedbodypart} setSelectedbodypart={setSelectedbodypart}/>
     <div id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
       <h4 style={{fontWeight:"bold" ,marginBottom:"46px" ,marginLeft:"20px",fontSize:'26px' }} >Showing Results</h4>
-      <ul style={{display:'flex', flexDirection:"row", flexWrap:"wrap" ,justifyContent:"center"}}>
+      {(!currentExercises.length) ? <Loader />: <ul style={{display:'flex', flexDirection:"row", flexWrap:"wrap" ,justifyContent:"center"}}>
       {currentExercises.map((exercise, idx) => (
           <ExerciseCard key={idx} exercise={exercise} />
         ))}
-      </ul>
+      </ul>}
+      
       <Stack sx={{ mt: { lg: '114px', xs: '70px' } }} mb='50px' alignItems="center">
-        {exercises.length > 9 && (
+        {exercises.length > 6 && (
           <Pagination
             color="standard"
             shape="rounded"
             defaultPage={1}
             count={Math.ceil(exercises.length / exercisesPerPage)}
             page={currentPage}
-            onChange={paginate}
+            onChange={paginatelarge}
             size="large"
+            className='pagination-large'
+          />
+        )}
+      </Stack>
+      <Stack sx={{ mt: { lg: '114px', xs: '70px' } }} mb='50px' alignItems="center">
+        {exercises.length > 6 && (
+          <Pagination
+            color="standard"
+            shape="rounded"
+            defaultPage={1}
+            count={Math.ceil(exercises.length / exercisesPerPage)}
+            page={currentPage}
+            onChange={paginatesmall}
+            size="small"
+            className='pagination-small'
           />
         )}
       </Stack>
     </div>
-    </>
+    </Container>
   )
 }
 
@@ -141,6 +162,7 @@ button{
   text-transform:"none";
   right: '0px';
   
+  
 }
 
 @media screen and (max-width:768px) {
@@ -154,7 +176,39 @@ button{
     height: 30px;
     width: 80px;
   }
+ 
+}
+@media screen and (max-width:568px) {
+  h1{
+    font-size: 30px;
+  }
+  input{
+    width: 300px;
+    height:30px ;
+  }
+  button{
+    height: 30px;
+    width: 80px;
+   
+  }
+ 
 }
 `;
 
-
+const Container =styled.div`
+.pagination-small{
+    display: none;
+  }
+  .pagination-large{
+    display:inline;
+  }
+  
+@media screen and (max-width:568px) {
+    .pagination-large{
+    display: none;
+  }
+  .pagination-small{
+    display:inline;
+  }
+  }
+`;
