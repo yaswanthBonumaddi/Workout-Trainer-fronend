@@ -47,7 +47,11 @@ const Exercises = () => {
 
     const handleSearch = async () => {
       if (search) {
-        const exercisesData =  await axios.get('https://workout-trainer-api.vercel.app/allexercises');
+        const exercisesData =  await axios.get('https://workout-trainer-api.vercel.app/allexercises',{
+      headers:{
+        'x-token':localStorage.getItem('token')
+      }
+    });
   
         const searchedExercises = exercisesData.data.filter(
           (item) => item.name.toLowerCase().includes(search)
