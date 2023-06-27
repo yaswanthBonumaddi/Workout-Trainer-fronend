@@ -17,7 +17,7 @@ const Login = ()=> {
       const submithandler = async e =>{
         e.preventDefault();
         
-        await axios.post('http://localhost:5440/login',data).then(
+        await axios.post('https://workout-trainer-api.vercel.app/login',data).then(
           res => localStorage.setItem('token',res.data.token)).catch(err=>alert(err.response.data.msg))
           setData({email:"",password:""})
       }
