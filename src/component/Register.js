@@ -22,7 +22,7 @@ const Register = ()=> {
   const submithandler = async e =>{
     e.preventDefault();
     
-    await axios.post('http://localhost:5440/register',data).then(response=>{ setErrorwarning(response.data.msg)
+    await axios.post('https://workout-trainer-api.vercel.app/register',data).then(response=>{ setErrorwarning(response.data.msg)
     setMessage(response.data)
   }).catch(err=>setErrorwarning(err.response.data.msg)
   );
