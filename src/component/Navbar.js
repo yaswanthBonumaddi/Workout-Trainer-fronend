@@ -15,7 +15,7 @@ const Navbar = () => {
           <li className="listitem">Home</li>
         </Link>
         <Link to="/home" style={{ textDecoration: "none", color: "Black" }}>
-          <IoIosHome className="icons" />
+          <IoIosHome size={30}  className="icons" />
         </Link>
         <Link
           to="/exercises"
@@ -27,7 +27,7 @@ const Navbar = () => {
           to="/exercises"
           style={{ textDecoration: "none", color: "Black" }}
         >
-          <IoIosFitness className="icons" />
+          <IoIosFitness size={30}className="icons" />
         </Link>
         <Link
           to="/login"
@@ -42,7 +42,7 @@ const Navbar = () => {
           style={{ textDecoration: "none", color: "Black" }}
         >
           {" "}
-          <IoIosLogOut className="icons" />
+          <IoIosLogOut size={30} className="icons" />
         </Link>
       </ul>
     </Nav>
