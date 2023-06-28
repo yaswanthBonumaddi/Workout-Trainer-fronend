@@ -1,78 +1,99 @@
-import React from 'react';
-import { styled } from 'styled-components';
-import Logo from '../assets/images/Logo-black-small.png'
-import { Link } from 'react-router-dom';
-import { IoIosFitness,IoIosHome,IoIosLogOut } from "react-icons/io";
+import React from "react";
+import { styled } from "styled-components";
+import Logo from "../assets/images/Logo-black-small.png";
+import { Link } from "react-router-dom";
+import { IoIosFitness, IoIosHome, IoIosLogOut } from "react-icons/io";
 
 const Navbar = () => {
-
-
-
   return (
     <Nav>
-      <Link to='/'>
-        <img src={Logo} alt='Workout Trainer'/>
+      <Link to="/">
+        <img src={Logo} alt="Workout Trainer" />
+      </Link>
+      <ul>
+        <Link to="/home" style={{ textDecoration: "none", color: "Black" }}>
+          <li className="listitem">Home</li>
         </Link>
-        <ul>
-          <Link to="/home" style={{textDecoration:"none",color:"Black"}}><li className='listitem'>Home</li></Link>
-          <Link  to="/home" style={{textDecoration:"none",color:"Black"}}><IoIosHome className='icons'/></Link>
-          <Link to="/exercises" style={{textDecoration:"none",color:"Black"}}><li className='listitem'>Exercises</li></Link>
-          <Link to="/exercises" style={{textDecoration:"none",color:"Black"}}><IoIosFitness  className='icons'/></Link>
-          <Link to='/login' onClick={()=>localStorage.removeItem('token')} style={{color:"#000",textDecoration:"none"}}><li  className='listitem'>Logout</li></Link>
-          <Link to="/login" onClick={()=>localStorage.removeItem('token')} style={{textDecoration:"none",color:"Black"}}> <IoIosLogOut className='icons'/></Link>     
-        </ul>
-      </Nav>
-  )
-}
+        <Link to="/home" style={{ textDecoration: "none", color: "Black" }}>
+          <IoIosHome className="icons" />
+        </Link>
+        <Link
+          to="/exercises"
+          style={{ textDecoration: "none", color: "Black" }}
+        >
+          <li className="listitem">Exercises</li>
+        </Link>
+        <Link
+          to="/exercises"
+          style={{ textDecoration: "none", color: "Black" }}
+        >
+          <IoIosFitness className="icons" />
+        </Link>
+        <Link
+          to="/login"
+          onClick={() => localStorage.removeItem("token")}
+          style={{ color: "#000", textDecoration: "none" }}
+        >
+          <li className="listitem">Logout</li>
+        </Link>
+        <Link
+          to="/login"
+          onClick={() => localStorage.removeItem("token")}
+          style={{ textDecoration: "none", color: "Black" }}
+        >
+          {" "}
+          <IoIosLogOut className="icons" />
+        </Link>
+      </ul>
+    </Nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
 
 const Nav = styled.div`
   height: 70px;
-  background-color:#FFFAFB;
+  background-color: #fffafb;
   padding: 10px;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: flex-start;
   margin-left: 30px;
   margin-top: 20px;
-  img{
+  img {
     height: 40px;
   }
-  ul{
+  ul {
     display: flex;
-    list-style-type:none;
+    list-style-type: none;
     width: 300px;
     align-items: center;
     justify-content: space-around;
-    margin-left:100px;
-    font-weight:bold;
-    font-size:20px;
+    margin-left: 100px;
+    font-weight: bold;
+    font-size: 20px;
   }
-  .icons{
+  .icons {
     display: none;
   }
-  @media screen and (max-width:768px) {
-
-    margin-top:5px;
-  img {
-    height: 35px;
+  @media screen and (max-width: 768px) {
+    margin-top: 5px;
+    img {
+      height: 35px;
+    }
   }
-
-}
-@media screen and (max-width:992px) {
-  ul{
-    margin-left:50px;
+  @media screen and (max-width: 992px) {
+    ul {
+      margin-left: 50px;
+    }
   }
-  }
-  @media screen and (max-width:568px) {
+  @media screen and (max-width: 568px) {
     margin-left: 10px;
-    .listitem{
+    .listitem {
       display: none;
     }
-    .icons{
+    .icons {
       display: inline;
     }
   }
 `;
-
