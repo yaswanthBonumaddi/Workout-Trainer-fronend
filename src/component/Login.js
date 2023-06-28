@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -71,7 +70,6 @@ const Container = styled.div`
   background-color: #fffafb;
 
   .form-container {
-    border: 1px solid gray;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 1px 2px 3px 3px rgba(20, 20, 20, 0.3);
@@ -103,6 +101,8 @@ const Container = styled.div`
     width: 280px;
     border-radius: 5px;
     padding-left: 10px;
+    border: 1px solid gray;
+    background-color:#fffafb ;
   }
   span {
     color: #0a4857;

@@ -92,7 +92,7 @@ const Register = () => {
         <button type="submit">Register</button>
         <p>
           Already have an account?
-          <span onClick={clickonHandler}>Sign In</span>
+          <span onClick={clickonHandler}> Sign In</span>
         </p>
       </form>
     </Container>
@@ -117,11 +117,10 @@ const Container = styled.div`
     cursor: pointer;
     height: 40px;
     width: 150px;
-    margin: 0px 20px 20px 0px;
+    margin: 10px 20px 20px 0px;
     text-align: center;
   }
   .form-container {
-    border: 1px solid gray;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 1px 2px 3px 3px rgba(20, 20, 20, 0.3);
@@ -159,6 +158,8 @@ const Container = styled.div`
     width: 280px;
     border-radius: 5px;
     padding-left: 10px;
+    border: 1px solid gray;
+    background-color: #fffafb;
   }
 `;
 
