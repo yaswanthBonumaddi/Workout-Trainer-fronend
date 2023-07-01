@@ -5,6 +5,9 @@ import Detail from "./Detail";
 import Navbar from "./Navbar";
 
 const ExerciseDetailes = () => {
+  if (!localStorage.getItem("token")) {
+    return <Navigate replace to="/login" />;
+  }
   const [exerciseDetail, setExerciseDetail] = useState({});
   const { id } = useParams();
 
