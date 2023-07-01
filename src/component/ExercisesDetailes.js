@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Detail from "./Detail";
 import Navbar from "./Navbar";
+import { Navigate } from "react-router-dom";
 
 const ExerciseDetailes = () => {
   if (!localStorage.getItem("token")) {
