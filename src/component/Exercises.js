@@ -37,6 +37,7 @@ const Exercises = () => {
             headers: {
               "x-token": localStorage.getItem("token"),
             },
+          }
         );
       }
 
