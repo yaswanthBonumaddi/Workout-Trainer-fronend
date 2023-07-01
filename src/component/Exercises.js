@@ -10,6 +10,9 @@ import Navbar from "./Navbar";
 import noresults from "../assets/images/noresults.png";
 
 const Exercises = () => {
+  if (!localStorage.getItem("token")) {
+    return <Navigate replace to="/login" />;
+  }
   const [search, setSearch] = useState("");
   const [exercises, setExercises] = useState("");
   const [selectedbodypart, setSelectedbodypart] = useState("all");
