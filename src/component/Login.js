@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     setShowLoader("loading");
     await axios
-      .post("workout-trainer-api.vercel.app/login", data)
+      .post("https://workout-trainer-api.vercel.app/login", data)
       .then((res) => localStorage.setItem("token", res.data.token))
       .catch((err) => setErrorMsg(err.response.data.msg));
     setShowLoader("");
