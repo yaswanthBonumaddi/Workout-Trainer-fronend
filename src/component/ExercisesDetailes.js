@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import { Navigate } from "react-router-dom";
 
 const ExerciseDetailes = () => {
-  if (localStorage.getItem("token")=== undefined) {
+  if (!localStorage.getItem("token")) {
     return <Navigate replace to="/login" />;
   }
   const [exerciseDetail, setExerciseDetail] = useState({});
