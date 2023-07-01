@@ -3,22 +3,19 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Detail from "./Detail";
 import Navbar from "./Navbar";
-import { Navigate } from "react-router-dom";
 
 const ExerciseDetailes = () => {
-  if (!localStorage.getItem("token")) {
-    return <Navigate replace to="/login" />;
-  }
   const [exerciseDetail, setExerciseDetail] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     const fetchExercisesData = async () => {
       const exerciseDetailData = await axios.get(
-        `https://new-backend-fitness-app.vercel.app/exercises/exercise/${id}`,{
-          headers:{
-            'x-token':localStorage.getItem('token')
-          }
+        `https://workout-trainer-api.vercel.app/exercises/exercise/${id}`,
+        {
+          headers: {
+            "x-token": localStorage.getItem("token"),
+          },
         }
       );
       setExerciseDetail(exerciseDetailData.data[0]);

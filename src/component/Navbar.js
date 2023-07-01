@@ -15,7 +15,7 @@ const Navbar = () => {
           <li className="listitem">Home</li>
         </Link>
         <Link to="/home" style={{ textDecoration: "none", color: "Black" }}>
-          <IoIosHome size={30}  className="icons" />
+          <IoIosHome size={25} className="icons" />
         </Link>
         <Link
           to="/exercises"
@@ -27,7 +27,7 @@ const Navbar = () => {
           to="/exercises"
           style={{ textDecoration: "none", color: "Black" }}
         >
-          <IoIosFitness size={30}className="icons" />
+          <IoIosFitness size={25} className="icons" />
         </Link>
         <Link
           to="/login"
@@ -41,8 +41,7 @@ const Navbar = () => {
           onClick={() => localStorage.removeItem("token")}
           style={{ textDecoration: "none", color: "Black" }}
         >
-          {" "}
-          <IoIosLogOut size={30} className="icons" />
+          <IoIosLogOut size={25} className="icons" />
         </Link>
       </ul>
     </Nav>
@@ -75,6 +74,7 @@ const Nav = styled.div`
   }
   .icons {
     display: none;
+    size: 100px;
   }
   @media screen and (max-width: 768px) {
     margin-top: 5px;

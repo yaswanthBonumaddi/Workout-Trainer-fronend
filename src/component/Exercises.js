@@ -8,12 +8,8 @@ import Loader from "./Loader";
 import axios from "axios";
 import Navbar from "./Navbar";
 import noresults from "../assets/images/noresults.png";
-import { Navigate } from "react-router-dom";
 
 const Exercises = () => {
-  if (!localStorage.getItem("token")) {
-    return <Navigate replace to="/login" />;
-  }
   const [search, setSearch] = useState("");
   const [exercises, setExercises] = useState("");
   const [selectedbodypart, setSelectedbodypart] = useState("all");
@@ -36,7 +32,7 @@ const Exercises = () => {
         );
       } else {
         exercisesData = await axios.get(
-          `https://new-backend-fitness-app.vercel.app/exercises/${selectedbodypart}`
+          `https://workout-trainer-api.vercel.app/exercises/${selectedbodypart}`
         );
       }
 
@@ -57,10 +53,11 @@ const Exercises = () => {
   const handleSearch = async () => {
     if (search) {
       const exercisesData = await axios.get(
-        "https://new-backend-fitness-app.vercel.app/allexercises",{
-          headers:{
-            'x-token':localStorage.getItem('token')
-          }
+        "https://workout-trainer-api.vercel.app/allexercises",
+        {
+          headers: {
+            "x-token": localStorage.getItem("token"),
+          },
         }
       );
 
