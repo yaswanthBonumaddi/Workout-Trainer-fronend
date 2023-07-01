@@ -32,7 +32,10 @@ const Exercises = () => {
         );
       } else {
         exercisesData = await axios.get(
-          `https://workout-trainer-api.vercel.app/exercises/${selectedbodypart}`
+          `https://workout-trainer-api.vercel.app/exercises/${selectedbodypart},{
+            headers: {
+              "x-token": localStorage.getItem("token"),
+            },`
         );
       }
 
