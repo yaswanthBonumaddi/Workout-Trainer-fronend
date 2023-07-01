@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import axios from "axios";
 import Navbar from "./Navbar";
 import noresults from "../assets/images/noresults.png";
+import { Navigate } from "react-router-dom";
 
 const Exercises = () => {
   if (!localStorage.getItem("token")) {
