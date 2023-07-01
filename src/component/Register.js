@@ -25,7 +25,7 @@ const Register = () => {
     e.preventDefault();
     setShowLoader("loading");
     await axios
-      .post("workout-trainer-api.vercel.app/register", data)
+      .post("https://workout-trainer-api.vercel.app/register", data)
       .then((response) => {
         alert(response.data.msg);
         setMessage(response.data);
