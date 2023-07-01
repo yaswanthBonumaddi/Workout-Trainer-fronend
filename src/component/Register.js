@@ -6,6 +6,7 @@ import axios from "axios";
 const Register = () => {
   const [message, setMessage] = useState({});
   const [errorwarning, setErrorwarning] = useState("");
+  const [showLoader, setShowLoader] = useState("");
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -22,14 +23,15 @@ const Register = () => {
 
   const submithandler = async (e) => {
     e.preventDefault();
-
+    setShowLoader("loading");
     await axios
-      .post("https://workout-trainer-api.vercel.app/register", data)
+      .post("http://localhost:5440/register", data)
       .then((response) => {
         alert(response.data.msg);
         setMessage(response.data);
       })
       .catch((err) => setErrorwarning(err.response.data.msg));
+    setShowLoader("");
   };
 
   if (message.status === "ok") {
@@ -45,6 +47,7 @@ const Register = () => {
 
   return (
     <Container>
+      <div className={showLoader}></div>
       <form onSubmit={submithandler} className="form-container">
         <h1>Sign Up</h1>
         <p>Create Your Account</p>
@@ -160,6 +163,26 @@ const Container = styled.div`
     padding-left: 10px;
     border: 1px solid gray;
     background-color: #fffafb;
+  }
+  .loading {
+    border-top: 3px black solid;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    background: #04acec;
+    animation: loading 3s linear infinite;
+  }
+  @keyframes loading {
+    from {
+      left: 0%;
+      width: 0;
+      z-index: 100;
+    }
+    to {
+      left: 0;
+      width: 100%;
+    }
   }
 `;
 

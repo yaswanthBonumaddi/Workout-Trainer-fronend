@@ -8,18 +8,23 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [showLoader, setShowLoader] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
 
   const changehandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
   const submithandler = async (e) => {
     e.preventDefault();
+    setShowLoader("loading");
     await axios
-      .post("https://workout-trainer-api.vercel.app/login", data)
+      .post("http://localhost:5440/login", data)
       .then((res) => localStorage.setItem("token", res.data.token))
-      .catch((err) => alert(err.response.data.msg));
+      .catch((err) => setErrorMsg(err.response.data.msg));
+    setShowLoader("");
     setData({ email: "", password: "" });
   };
 
@@ -29,6 +34,7 @@ const Login = () => {
 
   return (
     <Container>
+      <div className={showLoader}></div>
       <form onSubmit={submithandler} className="form-container">
         <h1>Sign In</h1>
         <p>Sign into Your Account</p>
@@ -48,6 +54,9 @@ const Login = () => {
           onChange={changehandler}
         />
         <br />
+        {errorMsg ? (
+          <p style={{ color: "red", marginTop: "10px" }}>{errorMsg}</p>
+        ) : null}
         <button type="submit">Login</button>
         <p>
           Don't have an account?{" "}
@@ -93,7 +102,7 @@ const Container = styled.div`
     cursor: pointer;
     height: 40px;
     width: 150px;
-    margin: 20px 20px 20px 0px;
+    margin: 10px 20px 20px 0px;
   }
   input {
     height: 40px;
@@ -102,11 +111,31 @@ const Container = styled.div`
     border-radius: 5px;
     padding-left: 10px;
     border: 1px solid gray;
-    background-color:#fffafb ;
+    background-color: #fffafb;
   }
   span {
     color: #0a4857;
     font-weight: bold;
+  }
+  .loading {
+    border-top: 3px black solid;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    background: #04acec;
+    animation: loading 3s linear infinite;
+  }
+  @keyframes loading {
+    from {
+      left: 0%;
+      width: 0;
+      z-index: 100;
+    }
+    to {
+      left: 0;
+      width: 100%;
+    }
   }
 `;
 
