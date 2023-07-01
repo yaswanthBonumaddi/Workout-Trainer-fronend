@@ -11,7 +11,7 @@ import noresults from "../assets/images/noresults.png";
 import { Navigate } from "react-router-dom";
 
 const Exercises = () => {
-  if (!localStorage.getItem("token")) {
+  if (localStorage.getItem("token")=== undefined) {
     return <Navigate replace to="/login" />;
   }
   const [search, setSearch] = useState("");
